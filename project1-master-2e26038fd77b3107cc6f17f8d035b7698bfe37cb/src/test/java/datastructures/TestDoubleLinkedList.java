@@ -533,7 +533,6 @@ public class TestDoubleLinkedList extends BaseTest {
     		list.add(5);
     		list.add(7);
     		
-    		
     		assertEquals(list.delete(list.size() - 1), 7);
     		assertEquals(list.size(), 3);
     		
