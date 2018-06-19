@@ -524,4 +524,39 @@ public class TestDoubleLinkedList extends BaseTest {
             count += 2;
         }
     }
+    
+    @Test(timeout = SECOND) 
+    public void testDelete() {
+    		IList<Integer> list = this.makeInstance();
+    		list.add(2);
+    		list.add(3);
+    		list.add(5);
+    		list.add(7);
+    		
+    		assertEquals(list.delete(list.size() - 1), 7);
+    		assertEquals(list.size(), 3);
+    		
+    		assertEquals(list.delete(0), 2);
+    		assertEquals(list.size(), 2);
+    		
+    		list.add(4);
+    		
+    		assertEquals(list.delete(1), 5);
+    		assertEquals(list.size(), 2);
+    		
+    		assertEquals(list.delete(0), 3);
+    		assertEquals(list.size(), 1);
+    		
+    		assertEquals(list.delete(0), 4);
+    		assertTrue(list.isEmpty());
+    		
+    		try {
+                list.delete(0);
+                fail("Expected IndexOutOfBoundsException");
+            } catch (IndexOutOfBoundsException ex) {
+                // Do nothing: this is ok
+            }
+    }
+
+    
 }
